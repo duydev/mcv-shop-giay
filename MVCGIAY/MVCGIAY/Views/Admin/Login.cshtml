@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <div class="container">
+        <div class="omb_login">
+            <h2 class="text text-center">Login</h2>
+        </div>
+        <div class="row omb_row-sm-offset-3">
+            <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
+                </div>
+                <span class="help-block"></span>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                </div><br />
+                @ViewBag.Thongbao
+                <button class="btn btn-lg btn-block btn-default" type="submit">Đăng nhập</button>
+            </form>
+        </div>
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me">Ghi nhớ mật khẩu
+        </label>
+        <p class="omb_forgotPwd">
+            <a href="#">Quên mật khẩu?</a>
+        </p>
+    </div>
+</body>
+</html>

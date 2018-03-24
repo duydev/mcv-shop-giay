@@ -1,0 +1,88 @@
+﻿@model MVCGIAY.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Xoagiay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="title text-center">XÓA GIÀY</h2>
+<h3> Xóa sản phẩm này? </h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            Mã loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoai)
+        </dd>
+
+        <dt>
+            Đơn giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Số lượng còn:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLTon)
+        </dd>
+
+        <dt>
+            Mã NCC:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNCC)
+        </dd>
+
+        <dt>
+            Ngày cập nhật:
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/mm/yyyy}", Model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            Ảnh:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/home/" + Model.Anh)" width="120px" />
+        </dd>
+    </dl>
+</div>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-action no-color">
+            <input type="submit" value="Xóa" class="btn btn-default"/>|
+            <div class="btn btn-default">@Html.ActionLink("Trở về", "Giay")</div>
+        </div>
+    }
+</div>

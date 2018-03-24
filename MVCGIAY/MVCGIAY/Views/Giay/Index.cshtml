@@ -1,0 +1,33 @@
+﻿@using MVCGIAY.Models
+@using PagedList.Mvc;
+@model IEnumerable<MVCGIAY.Models.SANPHAM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 class="title text-center">Sản phẩm mới nhất</h2>
+@foreach (var giaymoi in Model)
+{
+    <div class="col-sm-4">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <a href="@Url.Action("Details", "Giay", new { id = giaymoi.MaSP})">
+                        <img alt="@giaymoi.TenSP" src="~/images/home/@giaymoi.Anh" style="align-content:center" />
+                        <h2>@giaymoi.TenSP</h2>
+                        <p>@giaymoi.DonGia</p>
+                    </a>
+                    <a href="@Url.Action("ThemGiohang", "Giohang", new { @iMaSP= giaymoi.MaSP, @strURL=Request.Url.ToString() })" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+            <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="@Url.Action("DatHang", "Giohang")"><i class="fa fa-plus-square"></i>Mua ngay</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+

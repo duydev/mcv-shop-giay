@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MVCGIAY.Models.SANPHAM>
+@{
+    ViewBag.Title = "SPtheoloai";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 class="title text-center">Sản phẩm theo loại</h2>
+@foreach (var giay in Model)
+{
+    <div class="col-sm-4">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <a href="@Url.Action("Details", "GIAY", new { id = giay.MaSP})">
+                        <img alt="@giay.TenSP" src="~/images/home/@giay.Anh" />
+                        <h2>@giay.TenSP</h2>
+                        <p>@giay.DonGia</p>
+                    </a>
+                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,115 @@
+﻿@using MVCGIAY.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<MVCGIAY.Models.SANPHAM>
+
+
+@helper Truncate(string input, int length)
+{
+if (input.Length < length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>...</text>
+}
+}
+@{
+    ViewBag.Title = "Giay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="title text-center">QUẢN LÝ THÔNG TIN SẢN PHẨM</h2>
+<div class="container">
+    <div class="col-sm-12">
+        <div class="row">
+            <div>
+                <p>
+                    @Html.ActionLink("Thêm mới", "Themmoigiay")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().TenSP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().MaLoai)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().DonGia)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().MoTa)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().SLTon)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().MaNCC)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().NgayCapNhat)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Anh)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenSP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LOAI)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonGia)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MoTa)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SLTon)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaNCC)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgayCapNhat)
+                            </td>
+                            <td width="120px">
+                                <img src="@Url.Content("~/images/home/"+ item.Anh)" />
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sửa", "Suagiay", new { id = item.MaSP }) |
+                                @Html.ActionLink("Chi tiết", "Chitietgiay", new { id = item.MaSP }) |
+                                @Html.ActionLink("Xóa", "Xoagiay", new { id = item.MaSP })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+                <div class="MenuTrang">
+                    @Html.PagedListPager(Model, Page => Url.Action("Giay", new { Page = Page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                <style>
+                    .MenuTrang li {
+                        display: inline;
+                    }
+
+                    table {
+                        border: medium
+                    }
+
+                    th {
+                        width: 100%
+                    }
+                </style>

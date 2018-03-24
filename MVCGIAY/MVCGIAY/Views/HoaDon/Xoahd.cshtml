@@ -1,0 +1,80 @@
+﻿@model MVCGIAY.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Xoahd";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="title text-center">QUẢN LÝ HÓA ĐƠN</h2>
+
+<h3>Xóa?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDDH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDDH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayGiaoHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGiaoHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhToan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <div>@Html.ActionLink("Về trang chủ", "Index")</div>
+        </div>
+    }
+</div>

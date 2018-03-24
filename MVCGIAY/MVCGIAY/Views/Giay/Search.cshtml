@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MVCGIAY.Models.SANPHAM>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 class="title text-center">Tìm kiếm sản phẩm</h2>
+@foreach (var item in Model)
+{
+    <div class="col-sm-4">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <a href="@Url.Action("Search", "Giay", new { id = item.MaSP})">
+                        <img alt="@item.TenSP" src="~/images/home/@item.Anh" style="align-content:center" />
+                        <h2>@item.TenSP</h2>
+                        <p>@item.DonGia</p>
+                    </a>
+                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+        function empty() {
+            var x = $('#search-box').val();
+            if (x == "" || x == null) {
+                return false;
+            }
+        }
+</script>
+

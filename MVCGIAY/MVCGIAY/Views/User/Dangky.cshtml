@@ -1,0 +1,140 @@
+﻿<style type="text/css">
+
+</style>
+@{
+    ViewBag.Title = "Dangky";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 class="title text-center">Đăng ký thành viên</h2>
+<table align="center">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td> Họ tên khách hàng:</td>
+            <td>
+                @Html.TextBox("HotenKH")
+                @ViewData["Loi1"]
+            </td>
+        </tr>
+        <tr>
+            <td>Giới tính:</td>
+            <td>
+                <select>
+                    <option>Nam</option>
+                    <option>Nữ</option>
+                </select>
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td> Tên đăng nhập:</td>
+            <td>
+                @Html.TextBox("TenDN")
+                @ViewData["Loi2"]
+            </td>
+        </tr>
+
+            <tr style="height:40px">
+                <td>  Mật khẩu:</td>
+                <td>
+                    @Html.Password("Matkhau")
+                    @ViewData["Loi3"]
+                </td>
+            </tr>
+            @*<tr style="height:40px">
+                <td>Mật khẩu nhập lại: </td>
+                <td>
+                    @Html.Password("Matkhaunhaplai")
+                    @ViewData["Loi4"]
+                </td>
+            </tr>*@
+
+
+            <tr style="height:40px">
+                <td> Email:</td>
+                <td>
+                    @Html.TextBox("Email")
+                    @ViewData["Loi5"]
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td> Địa chỉ:</td>
+                <td>
+                    @Html.TextBox("Diachi")
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Điện thoại:</td>
+                <td>
+                    @Html.TextBox("Dienthoai")
+                    @ViewData["Loi6"]
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td> Ngày sinh :</td>
+                <td>
+                    <input type="date" name="Ngaysinh" />
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td></td>
+                <td>
+                    <button type="submit" class="btn btn-default" value="Đăng ký">Đăng kí</button>
+                </td>
+            </tr>
+    }
+</table>
+
+@*&nbsp;&nbsp;&nbsp;
+        <table align="center">
+        @using (Html.BeginForm())
+        {
+            <tr>
+                <td>Họ tên</td>
+                <td>:</td>
+                <td><input placeholder="Nhập họ tên" type="text" id=”name” /></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td>:</td>
+                <td><input type="radio" id=Nam value="Nam" />Nam &nbsp;<input type="radio" id=Nu value="Nu" /> Nữ</td>
+            </tr>
+            <tr>
+                <td>Ngày sinh</td>
+                <td>:</td>
+                <td><input placeholder="mm/DD/yyyy" type="text" id=namsinh /></td>
+            </tr>
+            <tr>
+                <td>Tên tài khoản</td>
+                <td>:</td>
+                <td><input placeholder="Nhập tên tài khoản" type="text" id="username" /></td>
+            </tr>
+            <tr>
+                <td>Mật khẩu</td>
+                <td>:</td>
+                <td><input type="password" placeholder="Nhập mật khẩu" id="pass" /></td>
+            </tr>
+            <tr>
+                <td>Nhập lại mật khẩu</td>
+                <td>:</td>
+                <td><input type="password" placeholder="Nhập lại mật khẩu" id="re-pass" /></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>:</td>
+                <td><input type="email" placeholder="Nhập Email" id="email" /></td>
+            </tr>
+
+        }
+        <tr style="height:50px;" >
+            <td></td>
+            <td align="center">
+                <input type="submit" value="Đăng ký" />
+                <button type="submit" class="btn btn-default" value="Đăng ký">Đăng kí</button>
+            </td>
+        </tr>
+    </table>*@
+
+
+

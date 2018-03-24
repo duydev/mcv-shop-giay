@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVCGIAY.Models.DONDATHANG>
+
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="title text-center">QUẢN LÝ HÓA ĐƠN</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDDH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.TinhTrang)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.ThanhToan)
+    </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhTien)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TinhTrang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhToan)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Suahd", new { id=item.MaDDH }) |
+            @Html.ActionLink("Chi tiết", "Chitiethoadon", new { id=item.MaDDH }) |
+            @Html.ActionLink("Xóa", "Xoahd", new { id=item.MaDDH })
+        </td>
+    </tr>
+}
+
+</table>

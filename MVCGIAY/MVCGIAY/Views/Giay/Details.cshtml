@@ -1,0 +1,66 @@
+﻿<style type="text/css">
+    #choose a {
+        clear: both;
+        background-color: white;
+        color: gray;
+        width: 120px;
+        height: 35px;
+        display: block;
+        float: left;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        /*border:groove;
+        border-color: #fe980f*/
+    }
+
+        #choose a:hover {
+            background-color: #fe980f;
+            color: white;
+        }
+</style>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@*<style>
+    .col-nav{
+        right:0;
+        top:0;
+        width:auto;
+        position:absolute;
+    }
+    .col-nav li{
+        width:auto;
+        height:auto;
+    }
+</style>*@
+<h2 class="title text-center">CHI TIẾT SẢN PHẨM</h2>
+<div>
+    <div style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
+        <img src="~/images/home/@Model.Anh" width="100%" />
+    </div>
+    <div style="width:60%; float:left; padding:10px">
+        <h4 style="font-weight:bold;color:gray">Tên giày: <span style="color:#fe980f; font-size:16pt ">@Model.TenSP</span></h4>
+        @*<p style="text-align:justify"><Span style="font-weight:bold"> Mô tả: </Span>@Model.Mota </p>*@
+        <p style="font-weight:bold;color:gray"> Giá bán: <span style="color:#fe980f; font-size:16pt "> @String.Format("{0:0,0}", Model.DonGia) VNĐ </span></p>
+    </div>
+    @*<div class="col-nav" data-nav="2781">
+        <ul>
+            <li><img scr="" alt=""/></li>
+        </ul>
+    </div>*@
+    <div>
+        <a href="@Url.Action("ThemGiohang", "Giohang", new { @iMaSP= @Model.MaSP, @strURL=Request.Url.ToString() })" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+        @*<div id="choose">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="@Url.Action("Dathang", "GioHang", new { @iMaSP= @Model.MaSP, @strURL=Request.Url.ToString() })"><i class="fa fa-plus-square"></i> Mua ngay</a></li>
+            </ul>
+        </div>*@
+    </div>
+<img src="~/images/home/size.png" />
+    <div class="fb-like" data-href="https://www.facebook.com/Gi%C3%A0y-1887208494862236/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+
+    <div class="fb-comments" data-href="http://localhost:61509" data-numposts="5"></div>
+</div>
