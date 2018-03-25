@@ -1,3 +1,411 @@
 --------------------------------------------------------
 --  File created - Chủ nhật-tháng ba-25-2018   
 --------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Sequence ADMINS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SHOPGIAY"."ADMINS_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence BANNERS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SHOPGIAY"."BANNERS_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence CATEGORIES_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SHOPGIAY"."CATEGORIES_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence CUSTOMERS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SHOPGIAY"."CUSTOMERS_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence PRODUCTS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SHOPGIAY"."PRODUCTS_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SUPPLIERS_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SHOPGIAY"."SUPPLIERS_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Table ADMINS
+--------------------------------------------------------
+
+  CREATE TABLE "SHOPGIAY"."ADMINS" 
+   (	"ID" NUMBER(10,0), 
+	"USERNAME" VARCHAR2(50 BYTE), 
+	"PASSWORD" VARCHAR2(32 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table BANNERS
+--------------------------------------------------------
+
+  CREATE TABLE "SHOPGIAY"."BANNERS" 
+   (	"ID" NUMBER(10,0), 
+	"TITLE" NVARCHAR2(200), 
+	"IMAGE" VARCHAR2(255 BYTE), 
+	"LINK" VARCHAR2(255 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table CATEGORIES
+--------------------------------------------------------
+
+  CREATE TABLE "SHOPGIAY"."CATEGORIES" 
+   (	"ID" NUMBER(10,0), 
+	"NAME" NVARCHAR2(200)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table CUSTOMERS
+--------------------------------------------------------
+
+  CREATE TABLE "SHOPGIAY"."CUSTOMERS" 
+   (	"ID" NUMBER(10,0), 
+	"USERNAME" VARCHAR2(50 BYTE), 
+	"PASSWORD" VARCHAR2(32 BYTE), 
+	"FULLNAME" NVARCHAR2(200), 
+	"GENDER" VARCHAR2(1 BYTE), 
+	"DOB" DATE, 
+	"EMAIL" VARCHAR2(255 BYTE), 
+	"PHONE" VARCHAR2(15 BYTE), 
+	"ADDRESS" NVARCHAR2(255), 
+	"CREATED_AT" TIMESTAMP (6), 
+	"UPDATED_AT" TIMESTAMP (6)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table PRODUCTS
+--------------------------------------------------------
+
+  CREATE TABLE "SHOPGIAY"."PRODUCTS" 
+   (	"ID" NUMBER(10,0), 
+	"CATEGORY_ID" NUMBER(10,0), 
+	"SUPPLIER_ID" NUMBER(10,0), 
+	"NAME" NVARCHAR2(200), 
+	"DESCRIPTION" NCLOB, 
+	"PRICE" NUMBER(10,2), 
+	"QUANTITY" NUMBER(10,0), 
+	"IMAGE" VARCHAR2(255 BYTE), 
+	"CREATED_AT" TIMESTAMP (6), 
+	"UPDATED_AT" TIMESTAMP (6)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" 
+ LOB ("DESCRIPTION") STORE AS BASICFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192 RETENTION 
+  NOCACHE LOGGING ) ;
+--------------------------------------------------------
+--  DDL for Table REVIEWS
+--------------------------------------------------------
+
+  CREATE TABLE "SHOPGIAY"."REVIEWS" 
+   (	"PRODUCT_ID" NUMBER(10,0), 
+	"CUSTOMER_ID" NUMBER(10,0), 
+	"RATING" NUMBER(1,0), 
+	"CONTENT" NCLOB
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" 
+ LOB ("CONTENT") STORE AS BASICFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192 RETENTION 
+  NOCACHE LOGGING ) ;
+--------------------------------------------------------
+--  DDL for Table SUPPLIERS
+--------------------------------------------------------
+
+  CREATE TABLE "SHOPGIAY"."SUPPLIERS" 
+   (	"ID" NUMBER(10,0), 
+	"NAME" NVARCHAR2(200), 
+	"ADDRESS" NVARCHAR2(255), 
+	"PHONE" VARCHAR2(15 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+REM INSERTING into SHOPGIAY.ADMINS
+SET DEFINE OFF;
+REM INSERTING into SHOPGIAY.BANNERS
+SET DEFINE OFF;
+REM INSERTING into SHOPGIAY.CATEGORIES
+SET DEFINE OFF;
+REM INSERTING into SHOPGIAY.CUSTOMERS
+SET DEFINE OFF;
+REM INSERTING into SHOPGIAY.PRODUCTS
+SET DEFINE OFF;
+REM INSERTING into SHOPGIAY.REVIEWS
+SET DEFINE OFF;
+REM INSERTING into SHOPGIAY.SUPPLIERS
+SET DEFINE OFF;
+--------------------------------------------------------
+--  DDL for Index ADMIN_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."ADMIN_PK" ON "SHOPGIAY"."ADMINS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index CATEGORIES_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."CATEGORIES_PK" ON "SHOPGIAY"."CATEGORIES" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index REVIEWS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."REVIEWS_PK" ON "SHOPGIAY"."REVIEWS" ("PRODUCT_ID", "CUSTOMER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index CUSTOMERS_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."CUSTOMERS_UK1" ON "SHOPGIAY"."CUSTOMERS" ("USERNAME", "EMAIL") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index BANNERS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."BANNERS_PK" ON "SHOPGIAY"."BANNERS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index CUSTOMERS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."CUSTOMERS_PK" ON "SHOPGIAY"."CUSTOMERS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index PRODUCTS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."PRODUCTS_PK" ON "SHOPGIAY"."PRODUCTS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index ADMINS_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."ADMINS_UK1" ON "SHOPGIAY"."ADMINS" ("USERNAME") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SUPPLIERS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SHOPGIAY"."SUPPLIERS_PK" ON "SHOPGIAY"."SUPPLIERS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Trigger ADMINS_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "SHOPGIAY"."ADMINS_TRG" 
+BEFORE INSERT ON ADMINS 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT ADMINS_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SHOPGIAY"."ADMINS_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BANNERS_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "SHOPGIAY"."BANNERS_TRG" 
+BEFORE INSERT ON BANNERS 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT BANNERS_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SHOPGIAY"."BANNERS_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger CATEGORIES_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "SHOPGIAY"."CATEGORIES_TRG" 
+BEFORE INSERT ON CATEGORIES 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT CATEGORIES_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SHOPGIAY"."CATEGORIES_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger CUSTOMERS_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "SHOPGIAY"."CUSTOMERS_TRG" 
+BEFORE INSERT ON CUSTOMERS 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT CUSTOMERS_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SHOPGIAY"."CUSTOMERS_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger PRODUCTS_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "SHOPGIAY"."PRODUCTS_TRG" 
+BEFORE INSERT ON PRODUCTS 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT PRODUCTS_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SHOPGIAY"."PRODUCTS_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger SUPPLIERS_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "SHOPGIAY"."SUPPLIERS_TRG" 
+BEFORE INSERT ON SUPPLIERS 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT SUPPLIERS_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SHOPGIAY"."SUPPLIERS_TRG" ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SUPPLIERS
+--------------------------------------------------------
+
+  ALTER TABLE "SHOPGIAY"."SUPPLIERS" ADD CONSTRAINT "SUPPLIERS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."SUPPLIERS" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."SUPPLIERS" MODIFY ("NAME" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table REVIEWS
+--------------------------------------------------------
+
+  ALTER TABLE "SHOPGIAY"."REVIEWS" ADD CONSTRAINT "REVIEWS_PK" PRIMARY KEY ("PRODUCT_ID", "CUSTOMER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."REVIEWS" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."REVIEWS" MODIFY ("CUSTOMER_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."REVIEWS" MODIFY ("RATING" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CATEGORIES
+--------------------------------------------------------
+
+  ALTER TABLE "SHOPGIAY"."CATEGORIES" ADD CONSTRAINT "CATEGORIES_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."CATEGORIES" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."CATEGORIES" MODIFY ("NAME" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ADMINS
+--------------------------------------------------------
+
+  ALTER TABLE "SHOPGIAY"."ADMINS" ADD CONSTRAINT "ADMINS_UK1" UNIQUE ("USERNAME")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."ADMINS" ADD CONSTRAINT "ADMIN_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."ADMINS" MODIFY ("ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CUSTOMERS
+--------------------------------------------------------
+
+  ALTER TABLE "SHOPGIAY"."CUSTOMERS" ADD CONSTRAINT "CUSTOMERS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."CUSTOMERS" ADD CONSTRAINT "CUSTOMERS_UK1" UNIQUE ("USERNAME", "EMAIL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."CUSTOMERS" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."CUSTOMERS" MODIFY ("USERNAME" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."CUSTOMERS" MODIFY ("PASSWORD" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."CUSTOMERS" MODIFY ("FULLNAME" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."CUSTOMERS" MODIFY ("EMAIL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table BANNERS
+--------------------------------------------------------
+
+  ALTER TABLE "SHOPGIAY"."BANNERS" ADD CONSTRAINT "BANNERS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."BANNERS" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."BANNERS" MODIFY ("IMAGE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PRODUCTS
+--------------------------------------------------------
+
+  ALTER TABLE "SHOPGIAY"."PRODUCTS" ADD CONSTRAINT "PRODUCTS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "SHOPGIAY"."PRODUCTS" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."PRODUCTS" MODIFY ("CATEGORY_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."PRODUCTS" MODIFY ("SUPPLIER_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."PRODUCTS" MODIFY ("NAME" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."PRODUCTS" MODIFY ("PRICE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SHOPGIAY"."PRODUCTS" MODIFY ("QUANTITY" NOT NULL ENABLE);
