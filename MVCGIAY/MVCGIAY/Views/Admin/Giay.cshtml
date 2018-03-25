@@ -1,6 +1,6 @@
 ﻿@using MVCGIAY.Models;
 @using PagedList.Mvc;
-@model PagedList.PagedList<MVCGIAY.Models.SANPHAM>
+@model PagedList.PagedList<MVCGIAY.Models.PRODUCT>
 
 
 @helper Truncate(string input, int length)
@@ -30,28 +30,28 @@ else
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().TenSP)
+                            @Html.DisplayNameFor(model => model.First().NAME)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().MaLoai)
+                            @Html.DisplayNameFor(model => model.First().CATEGORY_ID)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().DonGia)
+                            @Html.DisplayNameFor(model => model.First().PRICE)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().MoTa)
+                            @Html.DisplayNameFor(model => model.First().DESCRIPTION)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().SLTon)
+                            @Html.DisplayNameFor(model => model.First().QUANTITY)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().MaNCC)
+                            @Html.DisplayNameFor(model => model.First().SUPPLIER_ID)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().NgayCapNhat)
+                            @Html.DisplayNameFor(model => model.First().CREATED_AT)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().Anh)
+                            @Html.DisplayNameFor(model => model.First().IMAGE)
                         </th>
                         <th></th>
                     </tr>
@@ -60,33 +60,33 @@ else
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TenSP)
+                                @Html.DisplayFor(modelItem => item.NAME)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.LOAI)
+                                @Html.DisplayFor(modelItem => item.CATEGORY_ID)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.DonGia)
+                                @Html.DisplayFor(modelItem => item.PRICE)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MoTa)
+                                @Html.DisplayFor(modelItem => item.DESCRIPTION)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.SLTon)
+                                @Html.DisplayFor(modelItem => item.QUANTITY)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MaNCC)
+                                @Html.DisplayFor(modelItem => item.SUPPLIER_ID)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.NgayCapNhat)
+                                @Html.DisplayFor(modelItem => item.CREATED_AT)
                             </td>
                             <td width="120px">
-                                <img src="@Url.Content("~/images/home/"+ item.Anh)" />
+                                <img src="@Url.Content("~/images/home/"+ item.IMAGE)" />
                             </td>
                             <td>
-                                @Html.ActionLink("Sửa", "Suagiay", new { id = item.MaSP }) |
-                                @Html.ActionLink("Chi tiết", "Chitietgiay", new { id = item.MaSP }) |
-                                @Html.ActionLink("Xóa", "Xoagiay", new { id = item.MaSP })
+                                @Html.ActionLink("Sửa", "Suagiay", new { id = item.ID }) |
+                                @Html.ActionLink("Chi tiết", "Chitietgiay", new { id = item.ID }) |
+                                @Html.ActionLink("Xóa", "Xoagiay", new { id = item.ID })
                             </td>
                         </tr>
                     }

@@ -12,20 +12,20 @@ namespace MVCGIAY.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SUPPLIER
+    public partial class PRODUCT
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SUPPLIER()
-        {
-            this.PRODUCTS = new HashSet<PRODUCT>();
-        }
-    
         public int ID { get; set; }
+        public int CATEGORY_ID { get; set; }
+        public int SUPPLIER_ID { get; set; }
         public string NAME { get; set; }
-        public string ADDRESS { get; set; }
-        public string PHONE { get; set; }
+        public string DESCRIPTION { get; set; }
+        public decimal PRICE { get; set; }
+        public int QUANTITY { get; set; }
+        public string IMAGE { get; set; }
+        public Nullable<System.DateTime> CREATED_AT { get; set; }
+        public Nullable<System.DateTime> UPDATED_AT { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT> PRODUCTS { get; set; }
+        public virtual CATEGORY CATEGORy { get; set; }
+        public virtual SUPPLIER SUPPLIER { get; set; }
     }
 }

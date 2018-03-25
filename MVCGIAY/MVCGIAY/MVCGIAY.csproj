@@ -216,6 +216,9 @@
       <DependentUpon>DBShopGiay.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Giohang.cs" />
+    <Compile Include="Models\PRODUCT.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SUPPLIER.cs">
       <DependentUpon>DBShopGiay.tt</DependentUpon>
     </Compile>

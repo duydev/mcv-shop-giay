@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="DBShopGiayModel.BANNER" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="DBShopGiayModel.CATEGORY" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="DBShopGiayModel.SUPPLIER" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBShopGiayModel.PRODUCT" Width="1.5" PointX="5" PointY="4.125" />
+        <AssociationConnector Association="DBShopGiayModel.PRODUCTS_FK1" />
+        <AssociationConnector Association="DBShopGiayModel.PRODUCTS_FK2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

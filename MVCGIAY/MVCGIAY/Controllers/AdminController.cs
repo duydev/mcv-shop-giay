@@ -39,7 +39,10 @@ namespace MVCGIAY.Controllers
             {
                 int pageNumber = (page ?? 1);
                 int pageSize = 4;
-                return View(data.SANPHAMs.ToList().OrderBy(n => n.MaSP).ToPagedList(pageNumber, pageSize));
+
+                IPagedList<PRODUCT> products = db.PRODUCTS.OrderBy(a => a.ID).ToPagedList(pageNumber, pageSize);
+
+                return View(products);
             }
 
         }
@@ -95,8 +98,11 @@ namespace MVCGIAY.Controllers
         [HttpGet]
         public ActionResult Themmoigiay()
         {
-            //ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
-            //ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNNC");
+            List<CATEGORY> categories = db.CATEGORIES.OrderBy(a => a.NAME).ToList();
+            List<SUPPLIER> suppliers = db.SUPPLIERS.OrderBy(a => a.NAME).ToList();
+
+            ViewBag.CATEGORY_ID = new SelectList(categories, "ID", "NAME");
+            ViewBag.SUPPLIER_ID = new SelectList(suppliers, "ID", "NAME");
             return View();
         }
 
@@ -104,14 +110,17 @@ namespace MVCGIAY.Controllers
         [ValidateInput(false)]
         public ActionResult Themmoigiay(SANPHAM giay, HttpPostedFileBase fileupload)
         {
-            //ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
-            //ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNNC");
+            List<CATEGORY> categories = db.CATEGORIES.OrderBy(a => a.NAME).ToList();
+            List<SUPPLIER> suppliers = db.SUPPLIERS.OrderBy(a => a.NAME).ToList();
+
+            ViewBag.CATEGORY_ID = new SelectList(categories, "ID", "NAME");
+            ViewBag.SUPPLIER_ID = new SelectList(suppliers, "ID", "NAME");
+
             if (fileupload == null)
             {
                 ViewBag.Thongbao = "Vui lòng chọn ảnh bìa";
                 return View();
             }
-            //them vao csdl
             else
             {
                 if (ModelState.IsValid)
@@ -131,6 +140,7 @@ namespace MVCGIAY.Controllers
             }
             return RedirectToAction("Giay");
         }
+
         public ActionResult Chitietgiay(int id)
         {
             //lay giay theo ma
