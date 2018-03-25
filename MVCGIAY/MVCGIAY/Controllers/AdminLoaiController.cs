@@ -62,7 +62,6 @@ namespace MVCGIAY.Controllers
         [HttpGet]
         public ActionResult Xoaloai(int id)
         {
-            //lay sp muốn xoa theo ma
             CATEGORY category = db.CATEGORIES.SingleOrDefault(a => a.ID == id);
             if (category == null)
             {

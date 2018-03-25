@@ -1,4 +1,4 @@
-﻿@model MVCGIAY.Models.LOAI
+﻿@model MVCGIAY.Models.CATEGORY
 
 @{
     ViewBag.Title = "Xoaloai";
@@ -7,16 +7,16 @@
 
 <h2 class="title text-center">XÓA LOẠI SẢN PHẨM</h2>
 
-<h3>Bạn có chắc muốn xoasa loại sản phẩm này</h3>
+<h3>Bạn có chắc muốn xóa loại sản phẩm này</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TenLoai)
+            @Html.DisplayNameFor(model => model.NAME)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenLoai)
+            @Html.DisplayFor(model => model.NAME)
         </dd>
 
     </dl>
