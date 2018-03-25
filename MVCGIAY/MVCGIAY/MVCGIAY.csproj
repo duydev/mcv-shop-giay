@@ -159,6 +159,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Commons\Helper.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminLoaiController.cs" />
     <Compile Include="Controllers\GiayController.cs" />
@@ -168,6 +169,18 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMIN.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BANNER.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CATEGORy.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CUSTOMER.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\dbQUANLYBANGIAY.designer.cs">
       <AutoGen>True</AutoGen>
@@ -179,12 +192,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBShopGiay.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBShopGiay.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DBShopGiay.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBShopGiay.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Giohang.cs" />
+    <Compile Include="Models\PRODUCT.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REVIEW.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUPPLIER.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +291,12 @@
     <Content Include="Models\DBShopGiay.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBShopGiay.Context.cs</LastGenOutput>
+      <DependentUpon>DBShopGiay.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DBShopGiay.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBShopGiay.edmx</DependentUpon>
+      <LastGenOutput>DBShopGiay.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -284,9 +317,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBShopGiay.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\DBShopGiay.edmx.diagram">
+    <Content Include="Models\DBShopGiay.edmx.diagram">
       <DependentUpon>DBShopGiay.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\gmaps.js" />

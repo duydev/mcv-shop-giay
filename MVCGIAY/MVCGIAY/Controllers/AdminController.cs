@@ -7,11 +7,17 @@ using MVCGIAY.Models;
 using PagedList;
 using PagedList.Mvc;
 using System.IO;
+using MVCGIAY.Commons;
+
 namespace MVCGIAY.Controllers
 {
     public class AdminController : Controller
     {
         dbQUANLYBANGIAYDataContext data = new dbQUANLYBANGIAYDataContext();
+
+        // DB Oracle
+        private DBShopGiayEntities db = new DBShopGiayEntities();
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -22,6 +28,7 @@ namespace MVCGIAY.Controllers
             else
                 return View();
         }
+
         public ActionResult Giay(int? page)
         {
             if (Session["Taikhoanadmin"] == null)
@@ -36,38 +43,53 @@ namespace MVCGIAY.Controllers
             }
 
         }
+
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(FormCollection colletion)
         {
             var tendn = colletion["username"];
             var matkhau = colletion["password"];
+
+            List<string> errors = new List<string>();
+
+            // Validating
             if (String.IsNullOrEmpty(tendn))
             {
-                ViewData["Loi1"] = "Phải nhập tên đăng nhập";
+                errors.Add("Phải nhập tên đăng nhập");
             }
-            else if (String.IsNullOrEmpty(matkhau))
+
+            if (String.IsNullOrEmpty(matkhau))
             {
-                ViewData["Loi2"] = "Phải nhập mật khẩu";
+                errors.Add("Phải nhập mật khẩu");
             }
-            else
+
+            if( errors.Count == 0 )
             {
-                ADMIN ad = data.ADMINs.SingleOrDefault(n => n.UserName == tendn && n.PassWord == matkhau);
-                if (ad != null)
+                ADMIN admin = db.ADMINS.SingleOrDefault( a => a.USERNAME == tendn );
+                if (admin != null)
                 {
-                    Session["Taikhoanadmin"] = ad;
-                    Session["Name"] = ad.UserName;
-                    return RedirectToAction("Index", "Admin");
+                    string currPassHash = Helper.md5(matkhau);
+                    if (admin.PASSWORD.CompareTo(currPassHash) == 0)
+                    {
+                        Session["Taikhoanadmin"] = admin;
+                        Session["Name"] = admin.USERNAME;
+                        return RedirectToAction("Index", "Admin");
+                    }
                 }
                 else
-                    ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                    errors.Add("Tên đăng nhập hoặc mật khẩu không đúng");
             }
+
+            ViewBag.errors = errors;
             return View();
         }
+
         [HttpGet]
         public ActionResult Themmoigiay()
         {
@@ -75,6 +97,7 @@ namespace MVCGIAY.Controllers
             ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNNC");
             return View();
         }
+
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Themmoigiay(SANPHAM giay, HttpPostedFileBase fileupload)

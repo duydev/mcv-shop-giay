@@ -141,6 +141,7 @@ C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.Dependenc
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.Web.xml
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.csprojResolveAssemblyReference.cache
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.pdb
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.xml

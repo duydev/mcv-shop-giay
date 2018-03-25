@@ -1,10 +1,9 @@
-﻿
-@{
+﻿@{
     Layout = null;
+
+    List<string> errors = ViewBag.errors != null ? ViewBag.errors : new List<string>();    
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -17,6 +16,13 @@
 <body>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <div class="container">
+        @if( errors.Count > 0 ) {
+            <ul class="alert alert-danger list-unstyled">
+                @foreach( string error in errors ){
+                    <li>@error</li>
+                }
+            </ul>
+        }
         <div class="omb_login">
             <h2 class="text text-center">Login</h2>
         </div>
@@ -31,7 +37,6 @@
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                     <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
                 </div><br />
-                @ViewBag.Thongbao
                 <button class="btn btn-lg btn-block btn-default" type="submit">Đăng nhập</button>
             </form>
         </div>

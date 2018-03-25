@@ -26,5 +26,11 @@ namespace MVCGIAY.Models
         }
     
         public DbSet<ADMIN> ADMINS { get; set; }
+        public DbSet<BANNER> BANNERS { get; set; }
+        public DbSet<CATEGORy> CATEGORIES { get; set; }
+        public DbSet<CUSTOMER> CUSTOMERS { get; set; }
+        public DbSet<PRODUCT> PRODUCTS { get; set; }
+        public DbSet<REVIEW> REVIEWS { get; set; }
+        public DbSet<SUPPLIER> SUPPLIERS { get; set; }
     }
 }

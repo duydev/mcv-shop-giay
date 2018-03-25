@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ADMINS">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,14 +13,174 @@
           <Property Name="USERNAME" Type="varchar2" MaxLength="50" />
           <Property Name="PASSWORD" Type="varchar2" MaxLength="32" />
         </EntityType>
+        <EntityType Name="BANNERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar2" MaxLength="200" />
+          <Property Name="IMAGE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="LINK" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CATEGORIES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar2" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="FULLNAME" Type="nvarchar2" MaxLength="200" Nullable="false" />
+          <Property Name="GENDER" Type="varchar2" MaxLength="1" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="PHONE" Type="varchar2" MaxLength="15" />
+          <Property Name="ADDRESS" Type="nvarchar2" MaxLength="255" />
+          <Property Name="CREATED_AT" Type="timestamp" Precision="6" />
+          <Property Name="UPDATED_AT" Type="timestamp" Precision="6" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SUPPLIER_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar2" MaxLength="200" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nclob" />
+          <Property Name="PRICE" Type="number" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="QUANTITY" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="IMAGE" Type="varchar2" MaxLength="255" />
+          <Property Name="CREATED_AT" Type="timestamp" Precision="6" />
+          <Property Name="UPDATED_AT" Type="timestamp" Precision="6" />
+        </EntityType>
+        <EntityType Name="REVIEWS">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="RATING" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="CONTENT" Type="nclob" />
+        </EntityType>
+        <EntityType Name="SUPPLIERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar2" MaxLength="255" />
+          <Property Name="PHONE" Type="varchar2" MaxLength="15" />
+        </EntityType>
+        <Association Name="PRODUCTS_FK1">
+          <End Role="CATEGORIES" Type="Self.CATEGORIES" Multiplicity="1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTS_FK2">
+          <End Role="SUPPLIERS" Type="Self.SUPPLIERS" Multiplicity="1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="SUPPLIER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REVIEWS_FK1">
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
+          <End Role="REVIEWS" Type="Self.REVIEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REVIEWS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REVIEWS_FK2">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="REVIEWS" Type="Self.REVIEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REVIEWS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ADMINS" EntityType="Self.ADMINS" Schema="SHOPGIAY" store:Type="Tables" />
+          <EntitySet Name="BANNERS" EntityType="Self.BANNERS" Schema="SHOPGIAY" store:Type="Tables" />
+          <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" Schema="SHOPGIAY" store:Type="Tables" />
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="SHOPGIAY" store:Type="Tables" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="SHOPGIAY" store:Type="Tables" />
+          <EntitySet Name="REVIEWS" EntityType="Self.REVIEWS" Schema="SHOPGIAY" store:Type="Tables" />
+          <EntitySet Name="SUPPLIERS" EntityType="Self.SUPPLIERS" Schema="SHOPGIAY" store:Type="Tables" />
+          <AssociationSet Name="PRODUCTS_FK1" Association="Self.PRODUCTS_FK1">
+            <End Role="CATEGORIES" EntitySet="CATEGORIES" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTS_FK2" Association="Self.PRODUCTS_FK2">
+            <End Role="SUPPLIERS" EntitySet="SUPPLIERS" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="REVIEWS_FK1" Association="Self.REVIEWS_FK1">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="REVIEWS" EntitySet="REVIEWS" />
+          </AssociationSet>
+          <AssociationSet Name="REVIEWS_FK2" Association="Self.REVIEWS_FK2">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="REVIEWS" EntitySet="REVIEWS" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBShopGiayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMINS" EntityType="Model.ADMIN" />
+          <EntitySet Name="BANNERS" EntityType="Model.BANNER" />
+          <EntitySet Name="CATEGORIES" EntityType="Model.CATEGORy" />
+          <EntitySet Name="CUSTOMERS" EntityType="Model.CUSTOMER" />
+          <EntitySet Name="PRODUCTS" EntityType="Model.PRODUCT" />
+          <EntitySet Name="REVIEWS" EntityType="Model.REVIEW" />
+          <EntitySet Name="SUPPLIERS" EntityType="Model.SUPPLIER" />
+          <AssociationSet Name="PRODUCTS_FK1" Association="Model.PRODUCTS_FK1">
+            <End Role="CATEGORy" EntitySet="CATEGORIES" />
+            <End Role="PRODUCT" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="REVIEWS_FK2" Association="Model.REVIEWS_FK2">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERS" />
+            <End Role="REVIEW" EntitySet="REVIEWS" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTS_FK2" Association="Model.PRODUCTS_FK2">
+            <End Role="SUPPLIER" EntitySet="SUPPLIERS" />
+            <End Role="PRODUCT" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="REVIEWS_FK1" Association="Model.REVIEWS_FK1">
+            <End Role="PRODUCT" EntitySet="PRODUCTS" />
+            <End Role="REVIEW" EntitySet="REVIEWS" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="ADMIN">
           <Key>
             <PropertyRef Name="ID" />
@@ -29,9 +189,128 @@
           <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="DBShopGiayEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ADMINS" EntityType="Self.ADMIN" />
-        </EntityContainer>
+        <EntityType Name="BANNER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LINK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CATEGORy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTS" Relationship="Model.PRODUCTS_FK1" FromRole="CATEGORy" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="FULLNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CREATED_AT" Type="DateTime" Precision="6" />
+          <Property Name="UPDATED_AT" Type="DateTime" Precision="6" />
+          <NavigationProperty Name="REVIEWS" Relationship="Model.REVIEWS_FK2" FromRole="CUSTOMER" ToRole="REVIEW" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="Int32" Nullable="false" />
+          <Property Name="SUPPLIER_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+          <Property Name="IMAGE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_AT" Type="DateTime" Precision="6" />
+          <Property Name="UPDATED_AT" Type="DateTime" Precision="6" />
+          <NavigationProperty Name="CATEGORy" Relationship="Model.PRODUCTS_FK1" FromRole="PRODUCT" ToRole="CATEGORy" />
+          <NavigationProperty Name="SUPPLIER" Relationship="Model.PRODUCTS_FK2" FromRole="PRODUCT" ToRole="SUPPLIER" />
+          <NavigationProperty Name="REVIEWS" Relationship="Model.REVIEWS_FK1" FromRole="PRODUCT" ToRole="REVIEW" />
+        </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="Int32" Nullable="false" />
+          <Property Name="RATING" Type="Int16" Nullable="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Model.REVIEWS_FK2" FromRole="REVIEW" ToRole="CUSTOMER" />
+          <NavigationProperty Name="PRODUCT" Relationship="Model.REVIEWS_FK1" FromRole="REVIEW" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTS" Relationship="Model.PRODUCTS_FK2" FromRole="SUPPLIER" ToRole="PRODUCT" />
+        </EntityType>
+        <Association Name="PRODUCTS_FK1">
+          <End Type="Model.CATEGORy" Role="CATEGORy" Multiplicity="1" />
+          <End Type="Model.PRODUCT" Role="PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REVIEWS_FK2">
+          <End Type="Model.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
+          <End Type="Model.REVIEW" Role="REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTS_FK2">
+          <End Type="Model.SUPPLIER" Role="SUPPLIER" Multiplicity="1" />
+          <End Type="Model.PRODUCT" Role="PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="SUPPLIER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REVIEWS_FK1">
+          <End Type="Model.PRODUCT" Role="PRODUCT" Multiplicity="1" />
+          <End Type="Model.REVIEW" Role="REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -41,9 +320,80 @@
           <EntitySetMapping Name="ADMINS">
             <EntityTypeMapping TypeName="Model.ADMIN">
               <MappingFragment StoreEntitySet="ADMINS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BANNERS">
+            <EntityTypeMapping TypeName="Model.BANNER">
+              <MappingFragment StoreEntitySet="BANNERS">
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORIES">
+            <EntityTypeMapping TypeName="Model.CATEGORy">
+              <MappingFragment StoreEntitySet="CATEGORIES">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="Model.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTS">
+            <EntityTypeMapping TypeName="Model.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCTS">
+                <ScalarProperty Name="UPDATED_AT" ColumnName="UPDATED_AT" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SUPPLIER_ID" ColumnName="SUPPLIER_ID" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REVIEWS">
+            <EntityTypeMapping TypeName="Model.REVIEW">
+              <MappingFragment StoreEntitySet="REVIEWS">
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPPLIERS">
+            <EntityTypeMapping TypeName="Model.SUPPLIER">
+              <MappingFragment StoreEntitySet="SUPPLIERS">
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
