@@ -71,18 +71,19 @@ C:\Users\ADMIN\documents\visual studio 2017\Projects\MVCGIAY\MVCGIAY\bin\PagedLi
 C:\Users\ADMIN\documents\visual studio 2017\Projects\MVCGIAY\MVCGIAY\bin\Facebook.dll
 C:\Users\ADMIN\documents\visual studio 2017\Projects\MVCGIAY\MVCGIAY\bin\Facebook.xml
 C:\Users\ADMIN\documents\visual studio 2017\Projects\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.csprojResolveAssemblyReference.cache
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\ApplicationInsights.config
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\csc.exe
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\VBCSCompiler.exe
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\ApplicationInsights.config
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\csc.exe.config
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\csc.rsp
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\csi.exe
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\csi.rsp
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
@@ -96,12 +97,13 @@ C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\System.Reflecti
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\vbc.exe
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\vbc.exe.config
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\vbc.rsp
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\VBCSCompiler.exe
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\MVCGIAY.dll.config
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\MVCGIAY.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\MVCGIAY.pdb
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Antlr3.Runtime.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.SqlServer.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Facebook.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.DependencyCollector.dll
@@ -113,6 +115,8 @@ C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.ApplicationI
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Newtonsoft.Json.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Oracle.ManagedDataAccess.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Oracle.ManagedDataAccess.EntityFramework.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\PagedList.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\PagedList.Mvc.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\System.Web.Helpers.dll
@@ -123,6 +127,8 @@ C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\System.Web.WebPages.De
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\System.Web.WebPages.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\System.Web.WebPages.Razor.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\WebGrease.dll
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.xml
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.SqlServer.xml
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Facebook.xml
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\PagedList.xml
@@ -143,5 +149,3 @@ C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.WindowsSe
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.Web.xml
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.pdb
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.dll
-C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\EntityFramework.xml

@@ -53,8 +53,8 @@ namespace MVCGIAY.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection colletion)
         {
-            var tendn = colletion["username"];
-            var matkhau = colletion["password"];
+            string tendn = ((string)colletion["username"]).Trim();
+            string matkhau = ((string)colletion["password"]).Trim();
 
             List<string> errors = new List<string>();
 
@@ -71,7 +71,7 @@ namespace MVCGIAY.Controllers
 
             if( errors.Count == 0 )
             {
-                ADMIN admin = db.ADMINS.SingleOrDefault( a => a.USERNAME == tendn );
+                ADMIN admin = db.ADMINS.FirstOrDefault( a => a.USERNAME == tendn );
                 if (admin != null)
                 {
                     string currPassHash = Helper.md5(matkhau);
@@ -82,8 +82,10 @@ namespace MVCGIAY.Controllers
                         return RedirectToAction("Index", "Admin");
                     }
                 }
-                else
-                    errors.Add("Tên đăng nhập hoặc mật khẩu không đúng");
+
+                // case wrong username or password
+                errors.Add("Tên đăng nhập hoặc mật khẩu không đúng.");
+
             }
 
             ViewBag.errors = errors;

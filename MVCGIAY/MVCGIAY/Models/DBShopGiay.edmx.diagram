@@ -4,18 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="574e6673dc4b45a0a2336e6373417b6d" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.ADMIN" Width="1.5" PointX="5.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.BANNER" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.CATEGORy" Width="1.5" PointX="0.75" PointY="6" />
-        <EntityTypeShape EntityType="Model.CUSTOMER" Width="1.5" PointX="3" PointY="6.125" />
-        <EntityTypeShape EntityType="Model.PRODUCT" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="Model.REVIEW" Width="1.5" PointX="5.25" PointY="1.625" />
-        <EntityTypeShape EntityType="Model.SUPPLIER" Width="1.5" PointX="0.75" PointY="1.75" />
-        <AssociationConnector Association="Model.PRODUCTS_FK1" />
-        <AssociationConnector Association="Model.REVIEWS_FK2" />
-        <AssociationConnector Association="Model.PRODUCTS_FK2" />
-        <AssociationConnector Association="Model.REVIEWS_FK1" />
+      <Diagram DiagramId="6ee294adbb4e4300a2e7a2b492d361fa" Name="Diagram1">
+        <EntityTypeShape EntityType="DBShopGiayModel.ADMIN" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
