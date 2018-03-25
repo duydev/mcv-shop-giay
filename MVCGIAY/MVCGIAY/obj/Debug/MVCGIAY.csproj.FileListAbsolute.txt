@@ -149,3 +149,4 @@ C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.WindowsSe
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\bin\Microsoft.AI.Web.xml
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.dll
 C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.pdb
+C:\Users\DuyDev\Desktop\mcv-shop-giay\MVCGIAY\MVCGIAY\obj\Debug\MVCGIAY.csprojResolveAssemblyReference.cache

@@ -26,5 +26,8 @@ namespace MVCGIAY.Models
         }
     
         public virtual DbSet<ADMIN> ADMINS { get; set; }
+        public virtual DbSet<BANNER> BANNERS { get; set; }
+        public virtual DbSet<CATEGORY> CATEGORIES { get; set; }
+        public virtual DbSet<SUPPLIER> SUPPLIERS { get; set; }
     }
 }

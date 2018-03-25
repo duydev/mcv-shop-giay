@@ -33,9 +33,6 @@ namespace MVCGIAY.Models
     partial void InsertSANPHAM(SANPHAM instance);
     partial void UpdateSANPHAM(SANPHAM instance);
     partial void DeleteSANPHAM(SANPHAM instance);
-    partial void InsertBANNER(BANNER instance);
-    partial void UpdateBANNER(BANNER instance);
-    partial void DeleteBANNER(BANNER instance);
     partial void InsertCTDDH(CTDDH instance);
     partial void UpdateCTDDH(CTDDH instance);
     partial void DeleteCTDDH(CTDDH instance);
@@ -54,12 +51,6 @@ namespace MVCGIAY.Models
     partial void InsertKHACHHANG(KHACHHANG instance);
     partial void UpdateKHACHHANG(KHACHHANG instance);
     partial void DeleteKHACHHANG(KHACHHANG instance);
-    partial void InsertLOAI(LOAI instance);
-    partial void UpdateLOAI(LOAI instance);
-    partial void DeleteLOAI(LOAI instance);
-    partial void InsertNHACC(NHACC instance);
-    partial void UpdateNHACC(NHACC instance);
-    partial void DeleteNHACC(NHACC instance);
     #endregion
 		
 		public dbQUANLYBANGIAYDataContext() : 
@@ -97,14 +88,6 @@ namespace MVCGIAY.Models
 			get
 			{
 				return this.GetTable<SANPHAM>();
-			}
-		}
-		
-		public System.Data.Linq.Table<BANNER> BANNERs
-		{
-			get
-			{
-				return this.GetTable<BANNER>();
 			}
 		}
 		
@@ -155,22 +138,6 @@ namespace MVCGIAY.Models
 				return this.GetTable<KHACHHANG>();
 			}
 		}
-		
-		public System.Data.Linq.Table<LOAI> LOAIs
-		{
-			get
-			{
-				return this.GetTable<LOAI>();
-			}
-		}
-		
-		public System.Data.Linq.Table<NHACC> NHACCs
-		{
-			get
-			{
-				return this.GetTable<NHACC>();
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SANPHAM")]
@@ -203,10 +170,6 @@ namespace MVCGIAY.Models
 		
 		private EntitySet<DANHGIA> _DANHGIAs;
 		
-		private EntityRef<LOAI> _LOAI;
-		
-		private EntityRef<NHACC> _NHACC;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -236,8 +199,6 @@ namespace MVCGIAY.Models
 			this._CTDDHs = new EntitySet<CTDDH>(new Action<CTDDH>(this.attach_CTDDHs), new Action<CTDDH>(this.detach_CTDDHs));
 			this._CTHDs = new EntitySet<CTHD>(new Action<CTHD>(this.attach_CTHDs), new Action<CTHD>(this.detach_CTHDs));
 			this._DANHGIAs = new EntitySet<DANHGIA>(new Action<DANHGIA>(this.attach_DANHGIAs), new Action<DANHGIA>(this.detach_DANHGIAs));
-			this._LOAI = default(EntityRef<LOAI>);
-			this._NHACC = default(EntityRef<NHACC>);
 			OnCreated();
 		}
 		
@@ -292,10 +253,6 @@ namespace MVCGIAY.Models
 			{
 				if ((this._MaLoai != value))
 				{
-					if (this._LOAI.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMaLoaiChanging(value);
 					this.SendPropertyChanging();
 					this._MaLoai = value;
@@ -376,10 +333,6 @@ namespace MVCGIAY.Models
 			{
 				if ((this._MaNCC != value))
 				{
-					if (this._NHACC.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMaNCCChanging(value);
 					this.SendPropertyChanging();
 					this._MaNCC = value;
@@ -468,74 +421,6 @@ namespace MVCGIAY.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOAI_SANPHAM", Storage="_LOAI", ThisKey="MaLoai", OtherKey="MaLoai", IsForeignKey=true, DeleteRule="SET NULL")]
-		public LOAI LOAI
-		{
-			get
-			{
-				return this._LOAI.Entity;
-			}
-			set
-			{
-				LOAI previousValue = this._LOAI.Entity;
-				if (((previousValue != value) 
-							|| (this._LOAI.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LOAI.Entity = null;
-						previousValue.SANPHAMs.Remove(this);
-					}
-					this._LOAI.Entity = value;
-					if ((value != null))
-					{
-						value.SANPHAMs.Add(this);
-						this._MaLoai = value.MaLoai;
-					}
-					else
-					{
-						this._MaLoai = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("LOAI");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACC_SANPHAM", Storage="_NHACC", ThisKey="MaNCC", OtherKey="MaNCC", IsForeignKey=true, DeleteRule="SET NULL")]
-		public NHACC NHACC
-		{
-			get
-			{
-				return this._NHACC.Entity;
-			}
-			set
-			{
-				NHACC previousValue = this._NHACC.Entity;
-				if (((previousValue != value) 
-							|| (this._NHACC.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NHACC.Entity = null;
-						previousValue.SANPHAMs.Remove(this);
-					}
-					this._NHACC.Entity = value;
-					if ((value != null))
-					{
-						value.SANPHAMs.Add(this);
-						this._MaNCC = value.MaNCC;
-					}
-					else
-					{
-						this._MaNCC = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("NHACC");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -590,140 +475,6 @@ namespace MVCGIAY.Models
 		{
 			this.SendPropertyChanging();
 			entity.SANPHAM = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BANNER")]
-	public partial class BANNER : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDBanner;
-		
-		private string _TenBanner;
-		
-		private System.Data.Linq.Binary _Anh;
-		
-		private string _LinkLK;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDBannerChanging(int value);
-    partial void OnIDBannerChanged();
-    partial void OnTenBannerChanging(string value);
-    partial void OnTenBannerChanged();
-    partial void OnAnhChanging(System.Data.Linq.Binary value);
-    partial void OnAnhChanged();
-    partial void OnLinkLKChanging(string value);
-    partial void OnLinkLKChanged();
-    #endregion
-		
-		public BANNER()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBanner", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDBanner
-		{
-			get
-			{
-				return this._IDBanner;
-			}
-			set
-			{
-				if ((this._IDBanner != value))
-				{
-					this.OnIDBannerChanging(value);
-					this.SendPropertyChanging();
-					this._IDBanner = value;
-					this.SendPropertyChanged("IDBanner");
-					this.OnIDBannerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenBanner", DbType="NVarChar(20)")]
-		public string TenBanner
-		{
-			get
-			{
-				return this._TenBanner;
-			}
-			set
-			{
-				if ((this._TenBanner != value))
-				{
-					this.OnTenBannerChanging(value);
-					this.SendPropertyChanging();
-					this._TenBanner = value;
-					this.SendPropertyChanged("TenBanner");
-					this.OnTenBannerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anh", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Anh
-		{
-			get
-			{
-				return this._Anh;
-			}
-			set
-			{
-				if ((this._Anh != value))
-				{
-					this.OnAnhChanging(value);
-					this.SendPropertyChanging();
-					this._Anh = value;
-					this.SendPropertyChanged("Anh");
-					this.OnAnhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkLK", DbType="VarChar(100)")]
-		public string LinkLK
-		{
-			get
-			{
-				return this._LinkLK;
-			}
-			set
-			{
-				if ((this._LinkLK != value))
-				{
-					this.OnLinkLKChanging(value);
-					this.SendPropertyChanging();
-					this._LinkLK = value;
-					this.SendPropertyChanged("LinkLK");
-					this.OnLinkLKChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -2308,282 +2059,6 @@ namespace MVCGIAY.Models
 		{
 			this.SendPropertyChanging();
 			entity.KHACHHANG = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LOAI")]
-	public partial class LOAI : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaLoai;
-		
-		private string _TenLoai;
-		
-		private EntitySet<SANPHAM> _SANPHAMs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaLoaiChanging(int value);
-    partial void OnMaLoaiChanged();
-    partial void OnTenLoaiChanging(string value);
-    partial void OnTenLoaiChanged();
-    #endregion
-		
-		public LOAI()
-		{
-			this._SANPHAMs = new EntitySet<SANPHAM>(new Action<SANPHAM>(this.attach_SANPHAMs), new Action<SANPHAM>(this.detach_SANPHAMs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLoai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaLoai
-		{
-			get
-			{
-				return this._MaLoai;
-			}
-			set
-			{
-				if ((this._MaLoai != value))
-				{
-					this.OnMaLoaiChanging(value);
-					this.SendPropertyChanging();
-					this._MaLoai = value;
-					this.SendPropertyChanged("MaLoai");
-					this.OnMaLoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoai", DbType="NVarChar(20)")]
-		public string TenLoai
-		{
-			get
-			{
-				return this._TenLoai;
-			}
-			set
-			{
-				if ((this._TenLoai != value))
-				{
-					this.OnTenLoaiChanging(value);
-					this.SendPropertyChanging();
-					this._TenLoai = value;
-					this.SendPropertyChanged("TenLoai");
-					this.OnTenLoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOAI_SANPHAM", Storage="_SANPHAMs", ThisKey="MaLoai", OtherKey="MaLoai")]
-		public EntitySet<SANPHAM> SANPHAMs
-		{
-			get
-			{
-				return this._SANPHAMs;
-			}
-			set
-			{
-				this._SANPHAMs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_SANPHAMs(SANPHAM entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOAI = this;
-		}
-		
-		private void detach_SANPHAMs(SANPHAM entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOAI = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NHACC")]
-	public partial class NHACC : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaNCC;
-		
-		private string _TenNNC;
-		
-		private string _DiaChi;
-		
-		private string _SDT;
-		
-		private EntitySet<SANPHAM> _SANPHAMs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaNCCChanging(int value);
-    partial void OnMaNCCChanged();
-    partial void OnTenNNCChanging(string value);
-    partial void OnTenNNCChanged();
-    partial void OnDiaChiChanging(string value);
-    partial void OnDiaChiChanged();
-    partial void OnSDTChanging(string value);
-    partial void OnSDTChanged();
-    #endregion
-		
-		public NHACC()
-		{
-			this._SANPHAMs = new EntitySet<SANPHAM>(new Action<SANPHAM>(this.attach_SANPHAMs), new Action<SANPHAM>(this.detach_SANPHAMs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNCC", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaNCC
-		{
-			get
-			{
-				return this._MaNCC;
-			}
-			set
-			{
-				if ((this._MaNCC != value))
-				{
-					this.OnMaNCCChanging(value);
-					this.SendPropertyChanging();
-					this._MaNCC = value;
-					this.SendPropertyChanged("MaNCC");
-					this.OnMaNCCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNNC", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TenNNC
-		{
-			get
-			{
-				return this._TenNNC;
-			}
-			set
-			{
-				if ((this._TenNNC != value))
-				{
-					this.OnTenNNCChanging(value);
-					this.SendPropertyChanging();
-					this._TenNNC = value;
-					this.SendPropertyChanged("TenNNC");
-					this.OnTenNNCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(200)")]
-		public string DiaChi
-		{
-			get
-			{
-				return this._DiaChi;
-			}
-			set
-			{
-				if ((this._DiaChi != value))
-				{
-					this.OnDiaChiChanging(value);
-					this.SendPropertyChanging();
-					this._DiaChi = value;
-					this.SendPropertyChanged("DiaChi");
-					this.OnDiaChiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="NVarChar(11)")]
-		public string SDT
-		{
-			get
-			{
-				return this._SDT;
-			}
-			set
-			{
-				if ((this._SDT != value))
-				{
-					this.OnSDTChanging(value);
-					this.SendPropertyChanging();
-					this._SDT = value;
-					this.SendPropertyChanged("SDT");
-					this.OnSDTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACC_SANPHAM", Storage="_SANPHAMs", ThisKey="MaNCC", OtherKey="MaNCC")]
-		public EntitySet<SANPHAM> SANPHAMs
-		{
-			get
-			{
-				return this._SANPHAMs;
-			}
-			set
-			{
-				this._SANPHAMs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_SANPHAMs(SANPHAM entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHACC = this;
-		}
-		
-		private void detach_SANPHAMs(SANPHAM entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHACC = null;
 		}
 	}
 }

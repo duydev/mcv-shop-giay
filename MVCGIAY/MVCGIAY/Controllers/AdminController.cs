@@ -95,8 +95,8 @@ namespace MVCGIAY.Controllers
         [HttpGet]
         public ActionResult Themmoigiay()
         {
-            ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
-            ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNNC");
+            //ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
+            //ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNNC");
             return View();
         }
 
@@ -104,8 +104,8 @@ namespace MVCGIAY.Controllers
         [ValidateInput(false)]
         public ActionResult Themmoigiay(SANPHAM giay, HttpPostedFileBase fileupload)
         {
-            ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
-            ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNNC");
+            //ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
+            //ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNNC");
             if (fileupload == null)
             {
                 ViewBag.Thongbao = "Vui lòng chọn ảnh bìa";
@@ -180,8 +180,8 @@ namespace MVCGIAY.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-            ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai", giay.MaLoai);
-            ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNCC", giay.MaNCC);
+            //ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai", giay.MaLoai);
+            //ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNCC", giay.MaNCC);
             return View(giay);
         }
         [HttpPost]
@@ -189,8 +189,8 @@ namespace MVCGIAY.Controllers
         [ValidateInput(false)]
         public ActionResult Suagiay(SANPHAM giay, HttpPostedFileBase fileupload)
         {
-            ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
-            ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNCC");
+            //ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
+            //ViewBag.MaNCC = new SelectList(data.NHACCs.ToList().OrderBy(n => n.TenNNC), "MaNCC", "TenNCC");
             if (fileupload == null)
             {
                 ViewBag.Thongbao = "Chọn ảnh bìa";

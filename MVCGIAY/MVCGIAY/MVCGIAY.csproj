@@ -184,6 +184,12 @@
     <Compile Include="Models\ADMIN.cs">
       <DependentUpon>DBShopGiay.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BANNER.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CATEGORY.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\dbQUANLYBANGIAY.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -204,7 +210,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBShopGiay.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBShopGiay1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBShopGiay.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Giohang.cs" />
+    <Compile Include="Models\SUPPLIER.cs">
+      <DependentUpon>DBShopGiay.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -308,7 +322,7 @@
     </None>
     <EntityDeploy Include="Models\DBShopGiay.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBShopGiay.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBShopGiay1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\DBShopGiay.edmx.diagram">
       <DependentUpon>DBShopGiay.edmx</DependentUpon>

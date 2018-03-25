@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCGIAY.Models.LOAI>
+﻿@model IEnumerable<MVCGIAY.Models.CATEGORY>
 
 @{
     ViewBag.Title = "LoaiGiay";
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TenLoai)
+            @Html.DisplayNameFor(model => model.NAME)
         </th>
         <th></th>
     </tr>
@@ -21,12 +21,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TenLoai)
+            @Html.DisplayFor(modelItem => item.NAME)
         </td>
         <td>
-            @Html.ActionLink("Thêm", "Themloai", new { id=item.MaLoai }) |
-            @Html.ActionLink("Sửa", "Sualoaigiay", new { id=item.MaLoai }) |
-            @Html.ActionLink("Xóa", "Xoaloai", new { id=item.MaLoai })
+            @Html.ActionLink("Sửa", "Sualoaigiay", new { id=item.ID }) |
+            @Html.ActionLink("Xóa", "Xoaloai", new { id=item.ID })
         </td>
     </tr>
 }

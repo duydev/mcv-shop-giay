@@ -12,89 +12,115 @@ namespace MVCGIAY.Controllers
 {
     public class AdminLoaiController : Controller
     {
-        // GET: AdminLoai
-        dbQUANLYBANGIAYDataContext data = new dbQUANLYBANGIAYDataContext();
+        private DBShopGiayEntities db = new DBShopGiayEntities();
+
         public ActionResult Index()
         {
             return View();
         }
         public ActionResult LoaiGiay()
         {
-            return View(data.LOAIs.ToList().OrderBy(n => n.MaLoai));
+            List<CATEGORY> categories = db.CATEGORIES.OrderBy(a => a.ID).ToList();
+            return View( categories );
         }
+
         [HttpGet]
         public ActionResult Themloai()
         {
-            ViewBag.MaNCC = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
             return View();
         }
+
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Themloai(LOAI loaigiay, HttpPostedFileBase fileupload)
+        public ActionResult Themloai(CATEGORY category)
         {
-            ViewBag.MaLoai = new SelectList(data.LOAIs.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
-            data.LOAIs.InsertOnSubmit(loaigiay);
-            data.SubmitChanges();
+            try
+            {
+                db.CATEGORIES.Add(category);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
             return RedirectToAction("LoaiGiay");
         }
+
         public ActionResult Chitietloai(int id)
         {
             //lay giay theo ma
-            LOAI loai = data.LOAIs.SingleOrDefault(n => n.MaLoai == id);
-            ViewBag.MaSP = loai.MaLoai;
-            if (loai == null)
+            CATEGORY category = db.CATEGORIES.SingleOrDefault(a => a.ID == id);
+            if (category == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(loai);
+            return View(category);
         }
+
         [HttpGet]
         public ActionResult Xoaloai(int id)
         {
             //lay sp muốn xoa theo ma
-            LOAI loai = data.LOAIs.SingleOrDefault(n => n.MaLoai == id);
-            ViewBag.MaLoai = loai.MaLoai;
-            if (loai == null)
+            CATEGORY category = db.CATEGORIES.SingleOrDefault(a => a.ID == id);
+            if (category == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(loai);
+            return View(category);
         }
+
         [HttpPost, ActionName("Xoaloai")]
         public ActionResult Xacnhanxoaloai(int id)
         {
-            LOAI loai = data.LOAIs.SingleOrDefault(n => n.MaLoai == id);
-            ViewBag.MaLoai = loai.MaLoai;
-            if (loai == null)
+            CATEGORY category = db.CATEGORIES.SingleOrDefault(a => a.ID == id);
+            if (category == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            data.LOAIs.DeleteOnSubmit(loai);
-            data.SubmitChanges();
+            try
+            {
+                db.CATEGORIES.Remove(category);
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
             return RedirectToAction("LoaiGiay");
         }
-        //Sửa sản phẩm
+
         [HttpGet]
         public ActionResult Sualoaigiay(int id)
         {
-            LOAI loai = data.LOAIs.SingleOrDefault(n => n.MaLoai == id);
-            if (loai == null)
+            CATEGORY category = db.CATEGORIES.SingleOrDefault(a => a.ID == id);
+            if (category == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(loai);
+            return View(category);
         }
+
         [HttpPost]
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)]
-        public ActionResult Sualoaigiay(LOAI loai)
+        public ActionResult Sualoaigiay(CATEGORY category)
         {
-            UpdateModel(loai);
-            data.SubmitChanges();
+            try
+            {
+                db.CATEGORIES.Attach(category);
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
             return RedirectToAction("LoaiGiay");
         }
     }

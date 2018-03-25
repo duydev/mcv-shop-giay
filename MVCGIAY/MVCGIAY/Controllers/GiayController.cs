@@ -26,11 +26,16 @@ namespace MVCGIAY.Controllers
             var giaymoi = Laygiaymoi(6);
             return View(giaymoi);
         }
+
+        /*
         public ActionResult LoaiSP()
         {
-            var loaisp = from sp in data.LOAIs select sp;
+            CATEGORY categoru
+            //var loaisp = from sp in data.LOAIs select sp;
             return PartialView(loaisp);
         }
+        */
+
         public ActionResult SPtheoloai(int id)
         {
             var giay = from g in data.SANPHAMs where g.MaLoai == id select g;
