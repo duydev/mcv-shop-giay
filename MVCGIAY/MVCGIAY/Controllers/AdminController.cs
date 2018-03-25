@@ -108,7 +108,7 @@ namespace MVCGIAY.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Themmoigiay(SANPHAM giay, HttpPostedFileBase fileupload)
+        public ActionResult Themmoigiay(PRODUCT product, HttpPostedFileBase fileupload)
         {
             List<CATEGORY> categories = db.CATEGORIES.OrderBy(a => a.NAME).ToList();
             List<SUPPLIER> suppliers = db.SUPPLIERS.OrderBy(a => a.NAME).ToList();
@@ -133,9 +133,18 @@ namespace MVCGIAY.Controllers
                     {
                         fileupload.SaveAs(path);
                     }
-                    giay.Anh = fileName;
-                    data.SANPHAMs.InsertOnSubmit(giay);
-                    data.SubmitChanges();
+
+                    product.IMAGE = fileName;
+
+                    try
+                    {
+                        db.PRODUCTS.Add(product);
+                        db.SaveChanges();
+                    }
+                    catch(Exception e)
+                    {
+                        throw e;
+                    }
                 }
             }
             return RedirectToAction("Giay");
@@ -143,41 +152,47 @@ namespace MVCGIAY.Controllers
 
         public ActionResult Chitietgiay(int id)
         {
-            //lay giay theo ma
-            SANPHAM giay = data.SANPHAMs.SingleOrDefault(n => n.MaSP == id);
-            ViewBag.MaSP = giay.MaSP;
-            if (giay == null)
+            PRODUCT product = db.PRODUCTS.SingleOrDefault(a => a.ID == id);
+            if (product == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(giay);
+            return View(product);
         }
+
         [HttpGet]
         public ActionResult Xoagiay(int id)
         {
-            //lay sp muốn xoa theo ma
-            SANPHAM giay = data.SANPHAMs.SingleOrDefault(n => n.MaSP == id);
-            ViewBag.MaSP = giay.MaSP;
-            if (giay == null)
+            PRODUCT product = db.PRODUCTS.SingleOrDefault(a => a.ID == id);
+            if (product == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(giay);
+            return View(product);
         }
+
         [HttpPost, ActionName("Xoagiay")]
         public ActionResult Xacnhanxoa(int id)
         {
-            SANPHAM giay = data.SANPHAMs.SingleOrDefault(n => n.MaSP == id);
-            ViewBag.MaSP = giay.MaSP;
-            if (giay == null)
+            PRODUCT product = db.PRODUCTS.SingleOrDefault(a => a.ID == id);
+            if (product == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            data.SANPHAMs.DeleteOnSubmit(giay);
-            data.SubmitChanges();
+
+            try
+            {
+                db.PRODUCTS.Remove(product);
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
             return RedirectToAction("Giay");
         }
         [HttpGet]

@@ -1,4 +1,4 @@
-﻿@model MVCGIAY.Models.SANPHAM
+﻿@model MVCGIAY.Models.PRODUCT
 
 @{
     ViewBag.Title = "Xoagiay";
@@ -16,7 +16,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenSP)
+            @Html.DisplayFor(model => model.NAME)
         </dd>
 
         <dt>
@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaLoai)
+            @Html.DisplayFor(model => model.CATEGORY_ID)
         </dd>
 
         <dt>
@@ -32,7 +32,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DonGia)
+            @Html.DisplayFor(model => model.PRICE)
         </dd>
 
         <dt>
@@ -40,7 +40,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MoTa)
+            @Html.DisplayFor(model => model.DESCRIPTION)
         </dd>
 
         <dt>
@@ -48,7 +48,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SLTon)
+            @Html.DisplayFor(model => model.QUANTITY)
         </dd>
 
         <dt>
@@ -56,7 +56,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaNCC)
+            @Html.DisplayFor(model => model.SUPPLIER_ID)
         </dd>
 
         <dt>
@@ -64,7 +64,7 @@
         </dt>
 
         <dd>
-            @String.Format("{0:dd/mm/yyyy}", Model.NgayCapNhat)
+            @String.Format("{0:dd/mm/yyyy}", Model.UPDATED_AT)
         </dd>
 
         <dt>
@@ -72,7 +72,7 @@
         </dt>
 
         <dd>
-            <img src="@Url.Content("~/images/home/" + Model.Anh)" width="120px" />
+            <img src="@Url.Content("~/images/home/" + Model.IMAGE)" width="120px" />
         </dd>
     </dl>
 </div>
